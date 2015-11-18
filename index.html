@@ -1,0 +1,184 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<meta name="description" content="Bowling Lottery API">
+	<meta name="author" content="Darpan Patel">
+
+	<title>Bowling Lottery API</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="css/bootstrap.css" rel="stylesheet">
+
+	<!-- Bootstrap theme -->
+	<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+</head>
+<body>
+
+	<div class="container">
+	<div class="col-sm-12">
+	<h1>Bowling Lottery</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<th><h3>Bowlers</h3></th>
+				<th colspan="2"><h3>Leagues</h3></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<b>Create a new bowler</b>
+					<form action="api/bowler.php" method="post" role="form">
+					Firstname: <input type="text" class="form-control" name="firstname"><br>
+					Lastname: <input type="text" class="form-control" name="lastname"><br>
+					E-mail: <input type="text" class="form-control" name="email"><br>
+					Password: <input type="password" class="form-control" name="password"><br>
+					<input type="hidden" name="url" value = "createBowler"><br>
+					<button type="submit" class="btn btn-default">Create Bowler</button>
+					</form>
+				</td>
+				<td>
+					<b>Create a new league</b>
+					<form action="api/bowler.php" method="post">
+					Name: <input type="text" class="form-control" name="name"><br>
+					Description: <input type="text" class="form-control" name="descr"><br>
+					Capacity: <input type="text" class="form-control" name="capacity"><br>
+					<input type="hidden" name="url" value = "createLeague"><br>
+					<button type="submit" class="btn btn-default">Create League</button>
+					</form>
+				</td>
+				<td>
+					<b>Add a bowler to a league</b>
+					<form action="api/bowler.php" method="post">
+					League Id: <input type="text" class="form-control" name="league_id"><br>
+					Bowler Id: <input type="text" class="form-control" name="bowler_id"><br>
+					<input type="hidden" name="url" value = "addBowler"><br>
+					<button type="submit" class="btn btn-default">Add Bowler</button>
+					</form>
+				</td> 
+			</tr>
+			<tr>
+				<td>
+					<b>Get all bowlers</b>
+					<form action="api/bowler.php" method="get">
+					<input type="hidden" name="url" value = "allBowler">
+					<button type="submit" class="btn btn-default">All Bowlers</button>
+					</form><br>
+					
+					<b>Get a specific bowler</b>
+					<form action="api/bowler.php" method="get">
+					Bowler Id: <input type="text" class="form-control" name="bowler_id"><br>
+					<input type="hidden" name="url" value = "idBowler">
+					<button type="submit" class="btn btn-default">Single Bowler</button>
+					</form>
+				</td>
+				<td>
+					<b>Get all leagues</b>
+					<form action="api/bowler.php" method="get">
+					<input type="hidden" name="url" value = "allLeague">
+					<button type="submit" class="btn btn-default">All Leagues</button>
+					</form><br>
+					
+					<b>Get a specific league</b>
+					<form action="api/bowler.php" method="get">
+					League Id: <input type="text" class="form-control" name="league_id"><br>
+					<input type="hidden" name="url" value = "idLeague">
+					<button type="submit" class="btn btn-default">Single League</button>
+					</form>
+				</td>
+				<td>
+					<b>Get all bowlers in a league</b>
+					<form action="api/bowler.php" method="get">
+					League Id: <input type="text" class="form-control" name="league_id"><br>
+					<input type="hidden" name="url" value = "allBowlerId">
+					<button type="submit" class="btn btn-default">League Bowler</button>
+					</form>
+				</td>
+			</tr> 
+		</tbody>
+	</table>
+	<br>
+	<table class="table">
+		<thead>
+			<tr>
+				<th><h3>Lottery Tickets</h3></th>
+				<th colspan="2"><h3>Lottery</h3></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<b>Purchase a ticket for a bowler<br> for a lottery</b>
+					<form action="api/bowler.php" method="post">
+					League Id: <input type="text" class="form-control" name="league_id"><br>
+					Bowler Id: <input type="text" class="form-control" name="bowler_id"><br>
+					Tickets: <input type="text" class="form-control" name="tickets"><br>
+					<input type="hidden" name="url" value = "lottery_ticket">
+					<button type="submit" class="btn btn-default">Buy Ticket</button>
+					</form>
+				</td>
+				<td>
+					<b>Draw a winner for a lottery</b>
+					<form action="api/bowler.php" method="post">
+					League Id: <input type="text" class="form-control" name="league_id"><br>
+					<input type="hidden" name="url" value = "lottery_winner">
+					<button type="submit" class="btn btn-default">Draw</button>
+					</form>
+				</td>
+				<td>
+					<b>Record the winning bowler's roll</b>
+					<form action="api/bowler.php" method="post">
+					League Id: <input type="text" class="form-control" name="league_id"><br>
+					Bowler Id: <input type="text" class="form-control" name="bowler_id"><br>
+					Pins Knocked: <input type="text" class="form-control" name="pins_knocked"><br>
+					<input type="hidden" name="url" value = "lottery_attemp">
+					<button type="submit" class="btn btn-default">Winning Bowler</button>
+					</form>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b>Get ticket price and tickets bought <br>for a bowler for a lottery</b>
+					<form action="api/bowler.php" method="get">
+					League Id: <input type="text" class="form-control" name="league_id"><br>
+					Bowler Id: <input type="text" class="form-control" name="bowler_id"><br>
+					<input type="hidden" name="url" value = "lottery_ticket">
+					<button type="submit" class="btn btn-default">Show Price</button>
+					</form>
+				</td>
+				<td>
+					<b>Get the winner for a lottery</b>
+					<form action="api/bowler.php" method="get">
+					League Id: <input type="text" class="form-control" name="league_id"><br>
+					<button type="submit" class="btn btn-default">League Winner</button>
+					<input type="hidden" name="url" value = "lottery_winner">
+					</form>
+				</td>
+				<td>
+					<b>Get the winning bowler's roll</b>
+					<form action="api/bowler.php" method="get">
+					League Id: <input type="text" class="form-control" name="league_id"><br>
+					Bowler Id: <input type="text" class="form-control" name="bowler_id"><br>
+					<input type="hidden" name="url" value = "lottery_attemp">
+					<button type="submit" class="btn btn-default">Bowler's Roll</button>
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table> 
+	</div>
+	</div>
+	
+	<!-- Bootstrap core JavaScript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/index.js"></script> -->
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<!--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
+</body>
+</html>
